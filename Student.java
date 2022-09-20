@@ -1,12 +1,29 @@
+import java.util.ArrayList;
 public class Student{
+    private static ArrayList<String> ids = new ArrayList<>();
     private String id;
-    private VotingService service;
+    private static VotingService service = new VotingService();
+    private boolean submitted;
+    private boolean right;
     public Student(String id){
+
+        if(ids.contains(id)){
+            throw new IllegalStateException("ID is already taken");
+        }
+        else{
+        ids.add(id);
         this.id = id;
+        service = new VotingService(id);
+        }
+        
     }
-    public Student(String id, int testQuestions){
-        this.id = id;
-        VotingService service = new VotingService( testQuestions);
-    }
+   public void submitMC(String[] answers){
+      service.submitMC(answers, id, submitted);
+      submitted = true;
+   }
+   public void submitSC(String answer){
+      service.submitSC(answer, id, submitted);
+      submitted = true;
+   }
 
 }
