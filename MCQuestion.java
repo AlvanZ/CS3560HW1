@@ -10,7 +10,6 @@ public class MCQuestion extends Question {
         setQuestion(" ");
         this.answers = null;
         this.attempt = null;
-        System.out.println("Multiple Choice");
     }
     public MCQuestion(String question){
         setQuestion(question);
@@ -30,6 +29,9 @@ public class MCQuestion extends Question {
      /** Prints out the result of attempt compared to answer
      */
     public boolean check(String[] attempt){
+        if(attempt.length != answers.length){
+            return false;
+        }
         int correct =0;
         for(int i =0; i<attempt.length; i++){
             if(attempt[i].equals(answers[i])){
@@ -43,9 +45,9 @@ public class MCQuestion extends Question {
      */
     public void print(){
         System.out.println(super.getQuestion());
-        System.out.println(" There is " + answers.length + " answers, choices: ");
+        System.out.println("There is " + answers.length + " answers, choices: ");
         for(int i =0; i<choices.length; i++){
-            System.out.print(choices[i] + " ");
+            System.out.println(choices[i] + " ");
         }
     }
 }

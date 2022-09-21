@@ -20,7 +20,7 @@ public class Question {
      */
    public void print(){
     System.out.println(question);
-    System.out.println(" There is only one answer, Choices: ");
+    System.out.println("There is only one answer, Choices: ");
     for(int i =0; i<choices.length; i++){
         System.out.println(choices[i] + " ");
     }
