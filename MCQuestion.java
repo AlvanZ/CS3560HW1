@@ -1,6 +1,10 @@
 public class MCQuestion extends Question {
+    //Instance Variables
     private String[] answers;
     private String[] attempt;
+
+
+    //Constructors
     public MCQuestion(String question, String[] answers){
         setQuestion(question);
         this.answers = answers;
@@ -14,6 +18,8 @@ public class MCQuestion extends Question {
     public MCQuestion(String question){
         setQuestion(question);
        }
+
+    //Methods
     /** Sets user's attempt answers to their input
        @param attempts  The entry that attempt will become
      */
@@ -26,7 +32,8 @@ public class MCQuestion extends Question {
     public void setAnswer(String[] answers){
         this.answers= answers;
     }
-     /** Prints out the result of attempt compared to answer
+     /** Modfifed version of check where it checks the String array because there is multiple answers
+      * @param attempt The entry that the method checks to see if it's the same as answer
      */
     public boolean check(String[] attempt){
         if(attempt.length != answers.length){

@@ -2,24 +2,18 @@ import java.util.ArrayList;
 public class Student{
     //Class Variables
     private static VotingService service = new VotingService();
-    private static ArrayList<String> ids = new ArrayList<>();
+
 
     //Instance Variables
-    private String id;
+    private String name;
     private boolean submitted;
     private boolean right;
-
+    private static int id;
     //Constructor
-    public Student(String id){
-
-        if(ids.contains(id)){
-            throw new IllegalStateException("ID is already taken");
-        }
-        else{
-        ids.add(id);
-        this.id = id;
-        service = new VotingService(id);
-        }
+    public Student(String name){
+        id++;
+        this.name = name;
+        service = new VotingService(Integer.toString(id));
         
     }
 
@@ -28,17 +22,17 @@ public class Student{
        @param answers  The entry that will be submitted to service for multiple choice answers
      */
    public void submitMC(String[] answers){
-      service.submitMC(answers, id, submitted);
+      service.submitMC(answers, Integer.toString(id), submitted);
       submitted = true;
    }
     /** Submits the student's attempt to Voting Service
        @param answer  The entry that will be submitted to service for single choice answers
      */
    public void submitSC(String answer){
-      service.submitSC(answer, id, submitted);
+      service.submitSC(answer, Integer.toString(id), submitted);
       submitted = true;
    }
-     /** Resets the student's data of submitted and right
+     /** Resets the student's data of submitted and 
      */
    public void reset(){
     submitted = false;
